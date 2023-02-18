@@ -1,5 +1,5 @@
 import { getUserInfo } from "@/service/login";
-import { filterMenus, menuMapToRoutes } from "@/utils/map-menu";
+import { filterMenus, menuMapToRoutes, getPermisson } from "@/utils/map-menu";
 import { defineStore } from "pinia";
 import router from "@/router";
 
@@ -15,21 +15,7 @@ export const useUserStore = defineStore("user", () => {
     changeUserMenus();
   }
   function changeUserMenus() {
-    const allPermisson = [
-      "0",
-      "1",
-      "2",
-      "2-1",
-      "2-2",
-      "2-3",
-      "2-4",
-      "3",
-      "3-1",
-      "4",
-      "5",
-    ];
-
-    const userPermisson = allPermisson;
+    const userPermisson = getPermisson(menus);
     userMenus.value = filterMenus(menus, userPermisson);
 
     const userRouter = menuMapToRoutes(userMenus.value);

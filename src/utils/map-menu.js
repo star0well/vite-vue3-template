@@ -128,4 +128,15 @@ export const filterMenus = (menus, permission) => {
 
   return finaMenus;
 };
-export { firstMenu, firstRoute };
+
+const getPermisson = (menus) => {
+  let arry = [];
+  menus.forEach((item) => {
+    arry.push(item.id);
+    if (item.children) {
+      arry = arry.concat(getPermisson(item.children));
+    }
+  });
+  return arry;
+};
+export { firstMenu, firstRoute, getPermisson };
