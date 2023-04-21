@@ -1,7 +1,7 @@
 <template>
   <div class="welcome">
     <div class="center">
-      <el-image class="orgin" src="/assets/svg/study.jpg"></el-image>
+      <img class="orgin" src="@/assets/img/bgc-login.png" />
 
       <template v-for="(item, index) of iconList" :key="index">
         <el-icon size="80" class="icon" :class="`icon-${index}`">

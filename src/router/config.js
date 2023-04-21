@@ -11,5 +11,13 @@ const menus = [
     path: "/main/welcome",
     icon: "HomeFilled",
   },
+
+ {
+    name:"unocss",
+    id:"12",
+    type:2,
+    icon:"HomeFilled",
+    path:"/main/unocss/unocss"
+  },
 ];
 export { menus };

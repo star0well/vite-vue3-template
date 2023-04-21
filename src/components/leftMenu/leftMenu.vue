@@ -1,5 +1,19 @@
 <template>
-  <div class="left-menu">
+  <div class="left-menu flex flex-col">
+    <div class="flex h-15 items-center justify-center bg-#fcfcfc">
+      <el-icon
+        class="animate-iteration-1"
+        :class="isCollapse && 'animate-fade-in'"
+        size="16"
+        ><vueIcon></vueIcon
+      ></el-icon>
+      <div
+        class="transition box-border"
+        :class="[isCollapse ? 'hidden' : 'show ml-2']"
+      >
+        管理系统
+      </div>
+    </div>
     <el-scrollbar>
       <el-menu
         :unique-opened="true"
@@ -21,6 +35,8 @@ import { computed, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import SubItem from "./SubItem.vue";
 import { useUserStore } from "@/store/user";
+import vueIcon from "@/assets/svg/vue.svg";
+
 //store
 //router
 const router = useRouter();
@@ -52,14 +68,12 @@ watch(
 
 <style lang="scss" scoped>
 .left-menu {
-  height: 100%;
-  box-sizing: border-box;
-
   :deep(.el-scrollbar__view) {
-    height: 100%;
+    flex: 1;
   }
   :deep(.el-menu) {
     height: 100%;
+    border-right: none;
   }
 }
 </style>

@@ -21,6 +21,7 @@
   </div>
 </template>
 <script setup>
+import { useUserStore } from "@/store/user";
 import { pathMapToMenu } from "@/utils/map-menu";
 import { computed, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
@@ -28,7 +29,7 @@ const route = useRoute();
 const router = useRouter();
 const dynamicTags = ref([]);
 const currentRoute = ref("");
-
+const store = useUserStore();
 watch(
   () => route.path,
   (newValue) => {
@@ -37,7 +38,7 @@ watch(
       dynamicTags.value.push({ name: "首页", path: "/main/welcome" });
     }
     if (dynamicTags.value.map((item) => item.path).includes(newValue)) return;
-    const menu = pathMapToMenu(userMenus.value, newValue);
+    const menu = pathMapToMenu(store.userMenus, newValue);
     if (!menu) return;
     dynamicTags.value.push(menu);
   },
@@ -67,8 +68,6 @@ const handleClose = (tag) => {
   display: flex;
 }
 .tag-list {
-  padding: 0 0 10px 0;
-  margin-bottom: 10px;
   .actice {
     color: var(--el-color-primary);
   }

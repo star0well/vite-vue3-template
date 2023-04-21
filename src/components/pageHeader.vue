@@ -1,11 +1,5 @@
 <template>
   <div class="header" id="header">
-    <div class="left">
-      <el-icon size="32"><vueIcon></vueIcon></el-icon>
-
-      <span class="c-cyan">管理系统</span>
-    </div>
-
     <div class="right">
       <div class="menu-action">
         <el-icon size="16" v-if="!isFlod" @click="store.isFlod = true"
@@ -21,10 +15,11 @@
           <div class="btnItem loginOut" @click="loginOut">退出登录</div>
         </template>
         <div class="userInfo-box">
-          <img
-            :src="userInfo.avatar || './src/assets/img/avatar.png'"
-            class="portrait"
-          />
+          <el-image :src="userInfo.avatar || defaultImage" class="portrait">
+            <template #error>
+              <el-image :src="defaultImage" />
+            </template>
+          </el-image>
         </div>
       </el-tooltip>
     </div>
@@ -39,6 +34,7 @@ import NavBreadcrumb from "@/base-ui/breadcrumb/nav-breadcrumb.vue";
 import { pathMapBreadcrumbs } from "@/utils/map-menu";
 import { Expand, Fold } from "@element-plus/icons-vue";
 import { useUserStore } from "@/store/user";
+import defaultImage from "@/assets/img/avatar.png";
 const route = useRoute();
 const store = useUserStore();
 const userInfo = computed(() => store.userInfo);

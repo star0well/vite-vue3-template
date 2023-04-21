@@ -3,8 +3,9 @@ import store from "@/store";
 import router from "@/router";
 import "@/global/register-el-style";
 import { useUserStore } from "@/store/user";
-
 import App from "./App.vue";
+import "@/assets/css/index.css";
+import "uno.css";
 
 async function bootstrap() {
   const app = createApp(App);
