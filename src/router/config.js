@@ -19,5 +19,13 @@ const menus = [
     icon:"HomeFilled",
     path:"/main/unocss/unocss"
   },
+
+ {
+    name:"vitest",
+    id:"71",
+    type:2,
+    icon:"HomeFilled",
+    path:"/main/vitest/vitest"
+  },
 ];
 export { menus };

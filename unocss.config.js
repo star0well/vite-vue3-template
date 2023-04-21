@@ -1,6 +1,7 @@
 import presetIcons from "@unocss/preset-icons";
 import presetUno from "@unocss/preset-uno";
-export default {
+import { defineConfig } from "unocss";
+export default defineConfig({
   presets: [
     // https://github.com/MellowCo/unocss-preset-weapp
     // presetWeapp(),
@@ -15,5 +16,22 @@ export default {
       hidden: "opacity-0 w-0 whitespace-nowrap ",
     },
   ],
+  rules: [
+    [/^m-([\.\d]+)$/, ([_, num]) => ({ margin: `${num}rem` })],
+    [/^p-([\.\d]+)$/, ([_, num]) => ({ padding: `${num}rem` })],
+    [
+      /^text-(.*)$/,
+      ([, c], { theme }) => {
+        if (theme.colors[c]) return { color: theme.colors[c] };
+      },
+    ],
+  ],
+  theme: {
+    colors: {
+      my: {
+        primary: "#aac19b",
+      },
+    },
+  },
   transformers: [],
-};
+});

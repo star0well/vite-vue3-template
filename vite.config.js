@@ -23,12 +23,15 @@ export default defineConfig({
           importStyle: "sass",
         }),
       ],
-      // dts: "src/components.d.ts",
+      dts: "src/components.d.ts",
     }),
   ],
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
     },
+  },
+  test: {
+    environment: "jsdom",
   },
 });

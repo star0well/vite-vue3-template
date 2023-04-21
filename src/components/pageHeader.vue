@@ -2,10 +2,18 @@
   <div class="header" id="header">
     <div class="right">
       <div class="menu-action">
-        <el-icon size="16" v-if="!isFlod" @click="store.isFlod = true"
+        <el-icon
+          class="hover:cursor-pointer"
+          size="16"
+          v-if="!isFlod"
+          @click="store.isFlod = true"
           ><Fold
         /></el-icon>
-        <el-icon size="16" v-if="isFlod" @click="store.isFlod = false"
+        <el-icon
+          class="hover:cursor-pointer"
+          size="16"
+          v-if="isFlod"
+          @click="store.isFlod = false"
           ><Expand
         /></el-icon>
         <NavBreadcrumb :breadcrumbs="breadcrumbs"></NavBreadcrumb>
